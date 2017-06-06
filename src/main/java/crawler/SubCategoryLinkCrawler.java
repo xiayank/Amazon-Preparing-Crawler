@@ -20,12 +20,23 @@ public class SubCategoryLinkCrawler {
     private final String proxyPassword = "cs504";
     private List<String> proxyList;
     private int indexForProxyList = 0;
-
-
+    private List<String>titleListSelector;
+    private List<String>resultSizeSelector;
+    private  HashSet<String> crawledUrl;
 
 
     public SubCategoryLinkCrawler(String proxyPath){
         initProxyList(proxyPath);
+        initSelector();
+    }
+    private void initSelector(){
+        titleListSelector = new ArrayList<>();
+        titleListSelector.add(" > div > div:nth-child(3) > div:nth-child(1) > a > h2");
+        titleListSelector.add("> div > div:nth-child(5) > div:nth-child(1) > a > h2");
+        titleListSelector.add("> div > div.a-row.a-spacing-none > div.a-row.a-spacing-mini > a > h2");
+        resultSizeSelector = new ArrayList<>();
+        resultSizeSelector.add("li[class=s-result-item  celwidget ]");
+        resultSizeSelector.add("li[class=s-result-item s-result-card-for-container a-declarative celwidget ]");
     }
 
     public void exploreSubCategoryLinks(String categoryUrlPath, String subCategoryUrlPath) throws IOException {
@@ -64,10 +75,10 @@ public class SubCategoryLinkCrawler {
             if (url.isEmpty())
                 continue;
             url = url.trim();
-            System.out.println("url need to be crawled " +url);
+            System.out.println("category link need to be crawled " +url);
             try {
                 Document doc = Jsoup.connect(url).headers(headers).userAgent(USER_AGENT).maxBodySize(0).timeout(1000000).get();
-
+                Set<String>subUrlHash = new HashSet<>();
                 //Elements elements = doc.select("li[class=sub-categories__list__item]>a");
                 if(doc != null){
                     //Elements elements = doc.select("a[class=sub-categories__list__item__link]");
@@ -82,6 +93,10 @@ public class SubCategoryLinkCrawler {
                         Element element = doc.select(css).first();
                         if(element != null){
                             String href = element.attr("href");
+                            if(subUrlHash.contains(href)){
+                                continue;
+                            }
+                            subUrlHash.add(href);
                             System.out.println("https://www.amazon.com"+href);
                             bw.write("https://www.amazon.com"+href);
                             bw.newLine();
@@ -115,26 +130,92 @@ public class SubCategoryLinkCrawler {
 
         BufferedReader br = new BufferedReader(new FileReader(subCategoryUrlPath));
 
-        File file = new File(productDetailLogPath);
-        if(!file.exists()){
-            file.createNewFile();
-        }
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+
+        BufferedWriter bwDetail = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
+        BufferedWriter bwError = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
         String urlLine;
         while ((urlLine = br.readLine())!=null){
             try {
                 Document doc = Jsoup.connect(urlLine).headers(headers).userAgent(USER_AGENT).timeout(1000000).get();
-                Elements elements = doc.select("li[class=s-result-item  celwidget ]");
-                System.out.println("url need to be crawled " +urlLine);
-                System.out.println(elements.size());
+                changeProxy();
+                int resultSize = getResultSzie(doc);
+                System.out.println("product list page need to be crawled " +urlLine);
+                System.out.println(resultSize);
+                if(resultSize == 0){
+                    bwError.write(urlLine);
+                    continue;
+                }
+                for(int i = 0; i < resultSize; i++){
+                    String detailUrl = getDetailUrlFromDoc(doc, i);
+                    if(detailUrl.isEmpty()){
+                        continue;
+                    }
+
+
+                    String title = getTitleFromDoc(doc,i);
+                    if(title == ""){
+                        System.out.println("Empty title");
+                    }
+                    System.out.println("title --> " + title);
+                    bwDetail.write("title --> " + title);
+                    bwDetail.newLine();
+                }
+
             }catch (IllegalArgumentException e){
 
                 System.out.println(e.toString());
                 System.out.println(urlLine);
+                bwError.write(urlLine);
+                continue;
             }
 
         }
 
+
+    }
+
+    private int getResultSzie(Document doc){
+        for(String resultSize: resultSizeSelector){
+            Elements elements = doc.select(resultSize);
+            if(elements.size() != 0){
+                return elements.size();
+            }
+        }
+        return  0;
+    }
+
+    private String getTitleFromDoc(Document doc, int itemNum){
+        for(String titleSelector: titleListSelector){
+            String titleEleSelector = "#result_"+Integer.toString(itemNum) + titleSelector;
+            Element titleEle = doc.select(titleEleSelector).first();
+            if(titleEle !=  null){
+                return titleEle.text();
+            }
+        }
+
+        return "";
+    }
+
+    private String getDetailUrlFromDoc(Document doc, int itemNum){
+        String detailUrlSelector = "#result_"+Integer.toString(itemNum)+" > div > div:nth-child(3) > div:nth-child(1) > a";
+        Element detailUrlEle = doc.select(detailUrlSelector).first();
+        if(detailUrlEle != null){
+            String detailUrl = detailUrlEle.attr("href");
+            String normalizedUrl = normalizeUrl(detailUrl);
+            if(crawledUrl.contains(normalizedUrl)){
+                return "";
+            }
+            crawledUrl.add(normalizedUrl);
+            return normalizedUrl;
+        }else {
+            return "";
+        }
+
+    }
+
+    private String normalizeUrl(String url) {
+        int i = url.indexOf("ref");
+        return i == -1 ? url : url.substring(0, i - 1);
 
     }
 

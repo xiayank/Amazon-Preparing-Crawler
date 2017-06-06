@@ -15,7 +15,10 @@ public class CrawlerMain {
 
         SubCategoryLinkCrawler subCategoryLinkCrawler = new SubCategoryLinkCrawler(proxyPath);
         subCategoryLinkCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
-        //subCategoryLinkCrawler.getDetailProductInfo(subCategoryUrlPath,productDetailLogPath);
+        //for(int i = 0; i < 10; i++){
+            subCategoryLinkCrawler.getDetailProductInfo(subCategoryUrlPath,productDetailLogPath);
+        //}
+
 
     }
 
