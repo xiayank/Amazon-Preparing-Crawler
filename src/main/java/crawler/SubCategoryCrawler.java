@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import product.Product;
 
 import java.io.*;
 import java.net.Authenticator;
@@ -14,7 +15,7 @@ import java.util.*;
 /**
  * Created by NIC on 5/31/17.
  */
-public class SubCategoryLinkCrawler {
+public class SubCategoryCrawler {
 
     private final String proxyUser = "bittiger";
     private final String proxyPassword = "cs504";
@@ -22,10 +23,10 @@ public class SubCategoryLinkCrawler {
     private int indexForProxyList = 0;
     private List<String>titleListSelector;
     private List<String>resultSizeSelector;
-    private  HashSet<String> crawledUrl;
+    private  HashSet<String> crawledUrl = new HashSet<>();
 
 
-    public SubCategoryLinkCrawler(String proxyPath){
+    public SubCategoryCrawler(String proxyPath){
         initProxyList(proxyPath);
         initSelector();
     }
@@ -145,20 +146,37 @@ public class SubCategoryLinkCrawler {
                     bwError.write(urlLine);
                     continue;
                 }
+
                 for(int i = 0; i < resultSize; i++){
-                    String detailUrl = getDetailUrlFromDoc(doc, i);
-                    if(detailUrl.isEmpty()){
+                    Product product = new Product();
+                    //url
+                    product.detailUrl  = getDetailUrlFromDoc(doc, i);
+                    if(product.detailUrl.isEmpty()){
                         continue;
                     }
+                    System.out.println("detailUrl --> " + product.detailUrl);
 
 
-                    String title = getTitleFromDoc(doc,i);
-                    if(title == ""){
+                    //Id
+                    product.productId = getIdFromDetailUrl(product.detailUrl);
+                    if(product.productId.isEmpty()){
+                        continue;
+                    }
+                    System.out.println("Id        --> " + product.productId);
+
+                    //title
+                    product.title = getTitleFromDoc(doc,i);
+                    if(product.title == ""){
                         System.out.println("Empty title");
                     }
-                    System.out.println("title --> " + title);
-                    bwDetail.write("title --> " + title);
+                    System.out.println("title     --> " + product.title);
+                    bwDetail.write("title     --> " + product.title);
                     bwDetail.newLine();
+
+                    //price
+                    String price = getPriceFromDoc(doc,i);
+                    System.out.println("price     --> " + price);
+                    System.out.println("");
                 }
 
             }catch (IllegalArgumentException e){
@@ -174,6 +192,42 @@ public class SubCategoryLinkCrawler {
 
     }
 
+    private String getPriceFromDoc(Document doc, int itemNum){
+        String priceEleSelector = "#result_"+ Integer.toString(itemNum) + " > div > div:nth-child(4) > div:nth-child(1) > a > span";
+        Element priceEle = doc.select(priceEleSelector).first();
+        String rawPrice;
+        String finalPrice;
+        double dPrice;
+        if(priceEle != null){
+             rawPrice = priceEle.attr("aria-label");
+            if(!rawPrice.isEmpty()){
+                int found = rawPrice.indexOf('-');
+                if(found == -1){
+                    finalPrice = rawPrice.substring(1, rawPrice.length()).trim();
+                    finalPrice = finalPrice.replace(".", "");
+
+                }else{
+                    finalPrice = rawPrice.substring(1, found -1).trim();
+                    finalPrice = finalPrice.replace(".", "");
+                }
+
+                dPrice = Double.parseDouble(finalPrice) / 100.0;
+
+                System.out.println("double Price "+ dPrice);
+                System.out.println("raw price "+rawPrice);
+                return finalPrice;
+            }
+        }
+        finalPrice = "null Price";
+        rawPrice = "null Price";
+
+        System.out.println(rawPrice);
+        return finalPrice;
+    }
+    private String getIdFromDetailUrl(String url){
+        int index = url.indexOf("/dp/");
+        return index == -1 ? "": url.substring(index + 4, index + 14);
+    }
     private int getResultSzie(Document doc){
         for(String resultSize: resultSizeSelector){
             Elements elements = doc.select(resultSize);
@@ -215,7 +269,7 @@ public class SubCategoryLinkCrawler {
 
     private String normalizeUrl(String url) {
         int i = url.indexOf("ref");
-        return i == -1 ? url : url.substring(0, i - 1);
+        return i == -1 ? url : url.substring(0, i - 1);// remove http, start at '8' instead of '0'
 
     }
 

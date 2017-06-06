@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="609065a7-5ccd-4171-8916-ee68b363142d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/product/Product.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/product/Product.java" afterPath="$PROJECT_DIR$/src/main/java/product/Product.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,35 +31,56 @@
       <file leaf-file-name="CrawlerMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+            <state relative-caret-position="246">
+              <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubCategoryLinkCrawler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java">
+      <file leaf-file-name="SubCategoryCrawler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+            <state relative-caret-position="295">
+              <caret line="213" column="63" lean-forward="false" selection-start-line="213" selection-start-column="63" selection-end-line="213" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1536#1552#0" expanded="true" />
-                <element signature="e#4922#4938#0" expanded="true" />
-                <element signature="e#9026#9299#0" expanded="true" />
-                <element signature="e#9298#9299#0" expanded="true" />
+                <element signature="e#1570#1586#0" expanded="true" />
+                <element signature="e#4956#4972#0" expanded="true" />
+                <element signature="e#11270#11543#0" expanded="true" />
+                <element signature="e#11542#11543#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Product.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/product/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="228">
+              <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="26" />
+              <folding>
+                <element signature="e#250#251#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#374#375#0" expanded="true" />
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#442#443#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#594#595#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
+                <element signature="e#670#671#0" expanded="true" />
+                <element signature="e#702#703#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#806#807#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#960#961#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,6 +93,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>null price</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,9 +115,10 @@
         <option value="$PROJECT_DIR$/src/main/java/test.java" />
         <option value="$PROJECT_DIR$/src/main/java/crawler/AmazonCrawler.java" />
         <option value="$PROJECT_DIR$/src/main/java/crawler/test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java" />
         <option value="$PROJECT_DIR$/src/main/java/product/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java" />
       </list>
     </option>
   </component>
@@ -195,6 +222,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="product" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -857,15 +888,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1496174845635</updated>
-      <workItem from="1496174847663" duration="43456000" />
+      <workItem from="1496174847663" duration="50897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43456000" />
+    <option name="totallyTimeSpent" value="50897000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="23" width="1237" height="777" extended-state="6" />
+    <frame x="43" y="23" width="1237" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -886,7 +917,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2579666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34901366" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18664643" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1456067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -950,33 +981,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/javax/swing/plaf/nimbus/AbstractRegionPainter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        <state relative-caret-position="165">
+          <caret line="506" column="22" lean-forward="false" selection-start-line="506" selection-start-column="22" selection-end-line="506" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/SubCategoryLinkCrawler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1536#1552#0" expanded="true" />
-            <element signature="e#4922#4938#0" expanded="true" />
-            <element signature="e#9026#9299#0" expanded="true" />
-            <element signature="e#9298#9299#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="246">
+          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/product/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state relative-caret-position="228">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#250#251#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="1966" column="0" lean-forward="false" selection-start-line="1966" selection-start-column="0" selection-end-line="1966" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="213" column="63" lean-forward="false" selection-start-line="213" selection-start-column="63" selection-end-line="213" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1570#1586#0" expanded="true" />
+            <element signature="e#4956#4972#0" expanded="true" />
+            <element signature="e#11270#11543#0" expanded="true" />
+            <element signature="e#11542#11543#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
