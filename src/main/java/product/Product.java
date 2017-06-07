@@ -1,9 +1,11 @@
 package product;
 
+import java.io.Serializable;
+
 /**
  * Created by NIC on 6/5/17.
  */
-public class Product {
+public class Product implements Serializable {
 
 
     public String productId;

@@ -1,5 +1,9 @@
 package crawler;
 
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import org.apache.commons.lang.SerializationUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,6 +14,7 @@ import java.io.*;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.*;
+import java.util.concurrent.TimeoutException;
 // /import java.util.*;
 
 /**
@@ -122,7 +127,7 @@ public class SubCategoryCrawler {
 
     }
 
-    public void getDetailProductInfo (String subCategoryUrlPath, String productDetailLogPath)throws IOException {
+    public void getDetailProductInfo (String subCategoryUrlPath, String productDetailLogPath) throws IOException, TimeoutException {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
         headers.put("Accept-Encoding", "gzip, deflate, sdch, br");
@@ -146,6 +151,11 @@ public class SubCategoryCrawler {
                     bwError.write(urlLine);
                     continue;
                 }
+                //preparing message queue
+                ConnectionFactory factory = new ConnectionFactory();
+                factory.setHost("127.0.0.1");
+                Connection connection = factory.newConnection();
+                Channel channel = connection.createChannel();
 
                 for(int i = 0; i < resultSize; i++){
                     Product product = new Product();
@@ -185,7 +195,14 @@ public class SubCategoryCrawler {
                     System.out.println("");
 
                     product.category = "Sports&Outdoors";
+
+                    channel.queueDeclare("Q_demo",true,false,false,null);
+                    channel.basicPublish("", "Q_demo", null, SerializationUtils.serialize(product));
+
                 }
+                //close message queue
+                channel.close();
+                connection.close();
 
             }catch (IllegalArgumentException e){
 
