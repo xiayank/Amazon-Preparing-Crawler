@@ -152,6 +152,7 @@ public class SubCategoryCrawler {
                     //url
                     product.detailUrl  = getDetailUrlFromDoc(doc, i);
                     if(product.detailUrl.isEmpty()){
+                        System.out.println("Empty url");
                         continue;
                     }
                     System.out.println("detailUrl --> " + product.detailUrl);
@@ -168,15 +169,22 @@ public class SubCategoryCrawler {
                     product.title = getTitleFromDoc(doc,i);
                     if(product.title == ""){
                         System.out.println("Empty title");
+                        continue;
                     }
                     System.out.println("title     --> " + product.title);
                     bwDetail.write("title     --> " + product.title);
                     bwDetail.newLine();
 
                     //price
-                    String price = getPriceFromDoc(doc,i);
-                    System.out.println("price     --> " + price);
+                    product.price = getPriceFromDoc(doc,i);
+                    if(product.price == 0){
+                        System.out.println("Empty price");
+                        continue;
+                    }
+                    System.out.println("price     --> " + product.price);
                     System.out.println("");
+
+                    product.category = "Sports&Outdoors";
                 }
 
             }catch (IllegalArgumentException e){
@@ -192,7 +200,7 @@ public class SubCategoryCrawler {
 
     }
 
-    private String getPriceFromDoc(Document doc, int itemNum){
+    private double getPriceFromDoc(Document doc, int itemNum){
         String priceEleSelector = "#result_"+ Integer.toString(itemNum) + " > div > div:nth-child(4) > div:nth-child(1) > a > span";
         Element priceEle = doc.select(priceEleSelector).first();
         String rawPrice;
@@ -213,16 +221,16 @@ public class SubCategoryCrawler {
 
                 dPrice = Double.parseDouble(finalPrice) / 100.0;
 
-                System.out.println("double Price "+ dPrice);
-                System.out.println("raw price "+rawPrice);
-                return finalPrice;
+                //System.out.println("double Price "+ dPrice);
+                //System.out.println("raw price "+rawPrice);
+                return dPrice;
             }
         }
-        finalPrice = "null Price";
-        rawPrice = "null Price";
+        //finalPrice = "null Price";
+        //rawPrice = "null Price";
 
-        System.out.println(rawPrice);
-        return finalPrice;
+        //System.out.println(rawPrice);
+        return 0;
     }
     private String getIdFromDetailUrl(String url){
         int index = url.indexOf("/dp/");
