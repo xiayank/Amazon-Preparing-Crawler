@@ -58,6 +58,7 @@ public class SubCategoryCrawler {
             file.createNewFile();
 
         }
+
         BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
 
