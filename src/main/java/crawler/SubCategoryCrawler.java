@@ -188,12 +188,12 @@ public class SubCategoryCrawler {
                     bwDetail.newLine();
 
                     //price
-                    product.price = getPriceFromDoc(doc,i);
-                    if(product.price == 0){
+                    product.newPrice = getPriceFromDoc(doc,i);
+                    if(product.newPrice == 0){
                         System.out.println("Empty price");
                         continue;
                     }
-                    System.out.println("price     --> " + product.price);
+                    System.out.println("price     --> " + product.newPrice);
                     System.out.println("");
 
                     product.category = "Sports&Outdoors";
