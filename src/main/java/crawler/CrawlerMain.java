@@ -14,7 +14,7 @@ public class CrawlerMain {
         SubCategoryCrawler subCategoryCrawler = new SubCategoryCrawler(proxyPath);
         subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
         //for(int i = 0; i < 10; i++){
-        subCategoryCrawler.getDetailProductInfo(subCategoryUrlPath,productDetailLogPath);
+        //subCategoryCrawler.getDetailProductInfo(subCategoryUrlPath,productDetailLogPath);
         //}
         //String s =  subCategoryCrawler.getIdFromDetailUrl("https://www.amazon.com/Harbinger-Padded-Leather-Contoured-Weightlifting/dp/B001OJ36GG/ref=sr_1_6?s=sports-and-fitness&ie=UTF8&qid=1496716624&sr=1-6&keywords=workout+belt");
         //System.out.println(s);

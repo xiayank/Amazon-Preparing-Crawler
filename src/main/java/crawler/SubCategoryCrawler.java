@@ -49,9 +49,9 @@ public class SubCategoryCrawler {
 
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-        headers.put("Accept-Encoding", "gzip, deflate, sdch, br");
+        headers.put("Accept-Encoding", "gzip");
         headers.put("Accept-Language", "en-US,en;q=0.8");
-        String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36";
+        String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36";
 
         File file = new File(subCategoryUrlPath);
         if(!file.exists()){
@@ -130,7 +130,7 @@ public class SubCategoryCrawler {
     public void getDetailProductInfo (String subCategoryUrlPath, String productDetailLogPath) throws IOException, TimeoutException {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-        headers.put("Accept-Encoding", "gzip, deflate, sdch, br");
+        headers.put("Accept-Encoding", "*");
         headers.put("Accept-Language", "en-US,en;q=0.8");
         String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36";
 
@@ -144,6 +144,7 @@ public class SubCategoryCrawler {
             try {
                 Document doc = Jsoup.connect(urlLine).headers(headers).userAgent(USER_AGENT).timeout(1000000).get();
                 changeProxy();
+
                 int resultSize = getResultSzie(doc);
                 System.out.println("product list page need to be crawled " +urlLine);
                 System.out.println(resultSize);
@@ -326,6 +327,7 @@ public class SubCategoryCrawler {
     public  void changeProxy() {
         indexForProxyList = (indexForProxyList + 1) % proxyList.size();
         String proxy = proxyList.get(indexForProxyList);
+        System.out.println(proxy);
         System.setProperty("socksProxyHost", proxy);
     }
 }
