@@ -143,7 +143,7 @@ public class SubCategoryCrawler {
         String urlLine;
         while ((urlLine = br.readLine())!=null){
             try {
-                Document doc = Jsoup.connect(urlLine).headers(headers).userAgent(USER_AGENT).timeout(1000000).get();
+                Document doc = Jsoup.connect(urlLine).headers(headers).userAgent(USER_AGENT).timeout(1000000).maxBodySize(0).get();
                 changeProxy();
 
                 int resultSize = getResultSzie(doc);
@@ -198,6 +198,12 @@ public class SubCategoryCrawler {
 
                     product.category = "Sports&Outdoors";
 
+//                    if(product.productId.equals("B00004SABB") ||
+//                            product.productId.equals("B000051ZOA")||
+//                            product.productId.equals("B0000CA8WW")){
+//                        product.newPrice = 6.6666;
+//
+//                    }
                     channel.queueDeclare("Q_demo",true,false,false,null);
                     channel.basicPublish("", "Q_demo", null, SerializationUtils.serialize(product));
 
