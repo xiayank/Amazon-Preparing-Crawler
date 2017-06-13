@@ -128,7 +128,7 @@ public class SubCategoryCrawler {
 
     }
 
-    public void getDetailProductInfo (String subCategoryUrlPath) throws IOException, TimeoutException {
+    public void getDetailProductInfo (String subCategoryUrlPath, String MQName, String category) throws IOException, TimeoutException {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
         headers.put("Accept-Encoding", "*");
@@ -196,7 +196,7 @@ public class SubCategoryCrawler {
                     System.out.println("price     --> " + product.newPrice);
                     System.out.println("");
 
-                    product.category = "Sports&Outdoors";
+                    product.category = category;
 
 //                    if(product.productId.equals("B00004SABB") ||
 //                            product.productId.equals("B000051ZOA")||
@@ -204,8 +204,8 @@ public class SubCategoryCrawler {
 //                        product.newPrice = 6.6666;
 //
 //                    }
-                    channel.queueDeclare("Q_demo",true,false,false,null);
-                    channel.basicPublish("", "Q_demo", null, SerializationUtils.serialize(product));
+                    channel.queueDeclare(MQName,true,false,false,null);
+                    channel.basicPublish("", MQName, null, SerializationUtils.serialize(product));
 
                 }
                 //close message queue
