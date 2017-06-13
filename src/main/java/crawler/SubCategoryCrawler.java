@@ -128,7 +128,7 @@ public class SubCategoryCrawler {
 
     }
 
-    public void getDetailProductInfo (String subCategoryUrlPath, String productDetailLogPath) throws IOException, TimeoutException {
+    public void getDetailProductInfo (String subCategoryUrlPath) throws IOException, TimeoutException {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
         headers.put("Accept-Encoding", "*");
@@ -138,8 +138,8 @@ public class SubCategoryCrawler {
         BufferedReader br = new BufferedReader(new FileReader(subCategoryUrlPath));
 
 
-        BufferedWriter bwDetail = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
-        BufferedWriter bwError = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
+        //BufferedWriter bwDetail = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
+        //BufferedWriter bwError = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
         String urlLine;
         while ((urlLine = br.readLine())!=null){
             try {
@@ -150,7 +150,7 @@ public class SubCategoryCrawler {
                 System.out.println("product list page need to be crawled " +urlLine);
                 System.out.println(resultSize);
                 if(resultSize == 0){
-                    bwError.write(urlLine);
+                    //bwError.write(urlLine);
                     continue;
                 }
                 //preparing message queue
@@ -184,8 +184,8 @@ public class SubCategoryCrawler {
                         continue;
                     }
                     System.out.println("title     --> " + product.title);
-                    bwDetail.write("title     --> " + product.title);
-                    bwDetail.newLine();
+                    //bwDetail.write("title     --> " + product.title);
+                    //bwDetail.newLine();
 
                     //price
                     product.newPrice = getPriceFromDoc(doc,i);
@@ -216,7 +216,7 @@ public class SubCategoryCrawler {
 
                 System.out.println(e.toString());
                 System.out.println(urlLine);
-                bwError.write(urlLine);
+                //bwError.write(urlLine);
                 continue;
             }
 
