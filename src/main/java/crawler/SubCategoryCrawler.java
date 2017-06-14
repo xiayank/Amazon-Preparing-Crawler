@@ -14,7 +14,6 @@ import java.io.*;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.*;
-import java.util.concurrent.TimeoutException;
 // /import java.util.*;
 
 /**
@@ -128,7 +127,7 @@ public class SubCategoryCrawler {
 
     }
 
-    public void getDetailProductInfo (String subCategoryUrlPath, String MQName, String category) throws IOException, TimeoutException {
+    public void getDetailProductInfo (String subCategoryUrlPath, String MQName, String category) throws IOException {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
         headers.put("Accept-Encoding", "*");
@@ -139,7 +138,8 @@ public class SubCategoryCrawler {
 
 
         //BufferedWriter bwDetail = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
-        //BufferedWriter bwError = new BufferedWriter(new FileWriter(new File(productDetailLogPath).getAbsoluteFile()));
+        String erroLogPath = "/Users/NIC/Documents/504_BankEnd/MyCode/Intellij_WorkSpace/crawler-test/src/main/resources/errorLog.txt";
+        BufferedWriter bwError = new BufferedWriter(new FileWriter(new File(erroLogPath).getAbsoluteFile()));
         String urlLine;
         while ((urlLine = br.readLine())!=null){
             try {
@@ -212,11 +212,11 @@ public class SubCategoryCrawler {
                 channel.close();
                 connection.close();
 
-            }catch (IllegalArgumentException e){
+            }catch (Exception e){
 
                 System.out.println(e.toString());
                 System.out.println(urlLine);
-                //bwError.write(urlLine);
+                bwError.write(urlLine);
                 continue;
             }
 
