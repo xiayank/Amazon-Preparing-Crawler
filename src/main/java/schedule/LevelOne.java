@@ -20,6 +20,7 @@ public class LevelOne implements Runnable{
         SubCategoryCrawler subCategoryCrawler = new SubCategoryCrawler(proxyPath);
         String erroLogPath = "/Users/NIC/Documents/504_BankEnd/MyCode/Intellij_WorkSpace/crawler-test/src/main/resources/errorLog.txt";
         BufferedWriter bwError = null;
+
         try {
             bwError = new BufferedWriter(new FileWriter(new File(erroLogPath).getAbsoluteFile()));
             //subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);

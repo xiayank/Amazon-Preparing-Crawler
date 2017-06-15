@@ -19,7 +19,7 @@ public class CrawlerMain {
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
         LevelOne levelOne = new LevelOne();
         LevelTwo levelTwo = new LevelTwo();
-        scheduledThreadPool.scheduleAtFixedRate(levelOne,0,100, TimeUnit.MINUTES);
+        scheduledThreadPool.scheduleAtFixedRate(levelOne,0,30, TimeUnit.SECONDS);
         //scheduledThreadPool.scheduleAtFixedRate(levelTwo,1,100, TimeUnit.MINUTES);
 
 
