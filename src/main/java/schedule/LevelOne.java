@@ -23,7 +23,7 @@ public class LevelOne implements Runnable{
 
         try {
             bwError = new BufferedWriter(new FileWriter(new File(erroLogPath).getAbsoluteFile()));
-            //subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
+            subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
             subCategoryCrawler.getDetailProductInfo(subCategoryUrlPath, MQName, "Sports&Outdoors");
         } catch (IOException e) {
             System.out.println(e.toString());

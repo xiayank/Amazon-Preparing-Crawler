@@ -22,7 +22,8 @@ public class LevelTwo implements Runnable {
         BufferedWriter bwError = null;
         try {
             bwError = new BufferedWriter(new FileWriter(new File(erroLogPath).getAbsoluteFile()));
-            //subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
+
+            subCategoryCrawler.exploreSubCategoryLinks(categoryUrlPath, subCategoryUrlPath);
             subCategoryCrawler.getDetailProductInfo(subCategoryUrlPath, MQName, "Electronics&Computer");
 
         } catch (IOException e) {

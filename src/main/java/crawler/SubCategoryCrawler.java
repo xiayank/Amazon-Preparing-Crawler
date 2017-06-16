@@ -198,12 +198,12 @@ public class SubCategoryCrawler {
 
                     product.category = category;
 
-//                    if(product.productId.equals("B00004SABB") ||
-//                            product.productId.equals("B000051ZOA")||
-//                            product.productId.equals("B0000CA8WW")){
-//                        product.newPrice = 6.6666;
-//
-//                    }
+                    if(product.productId.equals("B0000AS7W2") ||
+                            product.productId.equals("B0002YUX8I")||
+                            product.productId.equals("B0006GCBL4")){
+                        product.newPrice = 6.6666;
+
+                    }
                     channel.queueDeclare(MQName,true,false,false,null);
                     channel.basicPublish("", MQName, null, SerializationUtils.serialize(product));
 
