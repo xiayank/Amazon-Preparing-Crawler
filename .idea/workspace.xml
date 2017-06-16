@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="609065a7-5ccd-4171-8916-ee68b363142d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/CrawlerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java" afterPath="$PROJECT_DIR$/src/main/java/crawler/SubCategoryCrawler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/schedule/LevelOne.java" afterPath="$PROJECT_DIR$/src/main/java/schedule/LevelOne.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/schedule/LevelTwo.java" afterPath="$PROJECT_DIR$/src/main/java/schedule/LevelTwo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/LogURL_Electronics&amp;Computer.txt" afterPath="$PROJECT_DIR$/src/main/resources/LogURL_Electronics&amp;Computer.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/LogURL_Sports&amp;Outdoors.txt" afterPath="$PROJECT_DIR$/src/main/resources/LogURL_Sports&amp;Outdoors.txt" />
-    </list>
+    <list default="true" id="609065a7-5ccd-4171-8916-ee68b363142d" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -887,12 +879,12 @@
       <option name="presentableId" value="Default" />
       <updated>1496174845635</updated>
       <workItem from="1496174847663" duration="67598000" />
-      <workItem from="1497026868786" duration="49146000" />
+      <workItem from="1497026868786" duration="49261000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116744000" />
+    <option name="totallyTimeSpent" value="116859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="23" width="1237" height="777" extended-state="6" />
