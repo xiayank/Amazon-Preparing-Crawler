@@ -14,6 +14,7 @@ public class Product implements Serializable {
     public String title;
     public String category;
     public double oldPrice;
+    public double reducedPercentage;
 
 
 
