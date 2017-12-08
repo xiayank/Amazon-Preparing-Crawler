@@ -199,12 +199,12 @@ public class SubCategoryCrawler {
                     product.category = category;
 
                     //simulate price reduce
-//                    if(product.productId.equals("7245456313") ||
-//                            product.productId.equals("B000WGJX5A")||
-//                            product.productId.equals("B0000AS7W2")){
-//                        product.newPrice = 1.111;
-//
-//                   }
+                    if(product.productId.equals("7245456313") ||
+                            product.productId.equals("B000WGJX5A")||
+                            product.productId.equals("B0000AS7W2")){
+                        product.newPrice = 1.111;
+
+                   }
 
 //                    if(product.productId.equals("B00065X222")){
 //                        product.newPrice = 15.93;
