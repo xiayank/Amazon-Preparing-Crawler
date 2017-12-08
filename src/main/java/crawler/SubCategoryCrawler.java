@@ -231,13 +231,13 @@ public class SubCategoryCrawler {
     }
 
     private double getPriceFromDoc(Document doc, int itemNum){
-        String priceEleSelector = "#result_"+ Integer.toString(itemNum) + " > div > div:nth-child(4) > div:nth-child(1) > a > span";
+        String priceEleSelector = "#result_"+ Integer.toString(itemNum) + " > div > div:nth-child(4) > div:nth-child(1) > a > span.a-offscreen";
         Element priceEle = doc.select(priceEleSelector).first();
         String rawPrice;
         String finalPrice;
         double dPrice;
         if(priceEle != null){
-             rawPrice = priceEle.attr("aria-label");
+             rawPrice = priceEle.text();
             if(!rawPrice.isEmpty()){
                 int found = rawPrice.indexOf('-');
                 if(found == -1){

@@ -51,7 +51,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>CrawlerMain</mainClass>
+                            <mainClass>crawler/CrawlerMain</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

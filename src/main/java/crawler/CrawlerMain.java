@@ -1,7 +1,6 @@
 package crawler;
 
 import schedule.LevelOne;
-import schedule.LevelTwo;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,9 +17,9 @@ public class CrawlerMain {
 
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
         LevelOne levelOne = new LevelOne();
-        LevelTwo levelTwo = new LevelTwo();
+        //LevelTwo levelTwo = new LevelTwo();
         scheduledThreadPool.scheduleAtFixedRate(levelOne,0,100, TimeUnit.SECONDS);
-        scheduledThreadPool.scheduleAtFixedRate(levelTwo,1,100, TimeUnit.SECONDS);
+        //scheduledThreadPool.scheduleAtFixedRate(levelTwo,1,100, TimeUnit.SECONDS);
 
 
 
